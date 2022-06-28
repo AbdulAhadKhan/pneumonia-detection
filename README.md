@@ -4,7 +4,7 @@ Data from [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/pault
 
 Place the files extracted from the source in the following manner:
 
-'''
+```
 data/
 └── raw/
     ├── chest-xray/
@@ -26,4 +26,4 @@ data/
     └── val/
         ├── NORMAL/
         └── PNEUMONIA/
-'''
+```
