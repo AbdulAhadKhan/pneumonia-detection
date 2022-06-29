@@ -2,7 +2,12 @@
 
 Data from [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
-Place the files extracted from the source in the following manner:
+## Details for Contributors
+
+### Environment Variables
+
+`DATA_DIRECTORY`:   -Path to the directory containing the data.
+                    -Assumes the following directory structure:
 
 ```
 data/
