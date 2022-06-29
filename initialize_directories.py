@@ -1,4 +1,5 @@
 import os
+import shutil
 
 DATA_DIRECTORY = os.environ['DATA_DIRECTORY'] if 'DATA_DIRECTORY' in os.environ else './data'
 PROCESSED_PATH = os.path.join(DATA_DIRECTORY, 'processed')
@@ -9,14 +10,13 @@ if not os.path.exists(DATA_DIRECTORY):
     exit(1)
 
 if os.path.exists(PROCESSED_PATH):
-   print('Processed directory already exists. Skip initialization? (y/n): ', end='')
-   answer = input()
-   if answer == 'y':
-      print('Skipping initialization')
-      exit()
-
-print('Removing processed directory...')
-os.rmdir(PROCESSED_PATH)
+    answer = input('Processed data directory already exists. ' +
+                     'Do you want to delete it? (y/N) ')
+    if answer == 'y':
+        shutil.rmtree(PROCESSED_PATH)
+    else:
+        print('Exiting...')
+        quit()
 
 print('Creating processed directory...')
 os.mkdir(PROCESSED_PATH)
