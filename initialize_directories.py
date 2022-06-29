@@ -1,7 +1,12 @@
 import os
 
-DATA_DIRECTORY = os.environ['DATA_DIRECTORY']
+DATA_DIRECTORY = os.environ['DATA_DIRECTORY'] if 'DATA_DIRECTORY' in os.environ else './data'
 PROCESSED_PATH = os.path.join(DATA_DIRECTORY, 'processed')
+
+if not os.path.exists(DATA_DIRECTORY):
+    print('Could not find data directory. ' + 
+          'Please set the environment variable DATA_DIRECTORY to the correct path.')
+    exit(1)
 
 if os.path.exists(PROCESSED_PATH):
    print('Processed directory already exists. Skip initialization? (y/n): ', end='')

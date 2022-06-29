@@ -6,8 +6,9 @@ Data from [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/pault
 
 ### Environment Variables
 
-`DATA_DIRECTORY`:   -Path to the directory containing the data.
-                    -Assumes the following directory structure:
+`DATA_DIRECTORY`:   
+- Path to the directory containing the data. Defaults to `./data`
+- Assumes the following directory structure:
 
 ```
 data/
