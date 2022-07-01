@@ -19,9 +19,12 @@ if os.path.exists(PROCESSED_PATH):
         exit(0)
 
 print('Creating processed directory...')
-os.mkdir(PROCESSED_PATH)
+os.makedirs(PROCESSED_PATH)
 
 print('Creating training, validation, and test directories with classified subdirectories...')
 for directory in ['train', 'val', 'test']:
     for class_name in ['bacterial', 'viral', 'normal']:
         os.makedirs(os.path.join(PROCESSED_PATH, directory, class_name))
+
+print('Creating directory for trained models...')
+os.makedirs(os.path.join(DATA_DIRECTORY, 'models'))
