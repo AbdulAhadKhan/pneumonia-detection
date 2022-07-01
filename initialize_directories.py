@@ -16,12 +16,12 @@ if os.path.exists(PROCESSED_PATH):
         shutil.rmtree(PROCESSED_PATH)
     else:
         print('Exiting...')
-        quit()
+        exit(0)
 
 print('Creating processed directory...')
 os.mkdir(PROCESSED_PATH)
 
 print('Creating training, validation, and test directories with classified subdirectories...')
-for directory in ['training', 'validation', 'test']:
+for directory in ['train', 'val', 'test']:
     for class_name in ['bacterial', 'viral', 'normal']:
         os.makedirs(os.path.join(PROCESSED_PATH, directory, class_name))
