@@ -4,6 +4,11 @@ Data from [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/pault
 
 ## Details for Contributors
 
+### Order of execution
+
+1) initialize_model.py
+2) data_cleansing_and_sorting.py
+
 ### Environment Variables
 
 `DATA_DIRECTORY`:   
