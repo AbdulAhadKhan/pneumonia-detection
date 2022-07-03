@@ -26,5 +26,15 @@ for directory in ['train', 'val', 'test']:
     for class_name in ['bacterial', 'viral', 'normal']:
         os.makedirs(os.path.join(PROCESSED_PATH, directory, class_name))
 
+if os.path.exists(os.path.join(DATA_DIRECTORY, 'models')):
+    answer = input('Models directory already exists. ' +
+                    'Deleting it will delete all models in it. ' +
+                    'Do you want to delete it? (y/N) ')
+    if answer == 'y':
+        shutil.rmtree(os.path.join(DATA_DIRECTORY, 'models'))
+    else:
+        print('Exiting...')
+        exit(0)
+
 print('Creating directory for trained models...')
 os.makedirs(os.path.join(DATA_DIRECTORY, 'models'))
