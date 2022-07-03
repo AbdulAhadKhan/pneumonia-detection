@@ -46,7 +46,7 @@ steps_per_epoch_list = [int(1500/batch_size)
                         for batch_size in batch_size_list]
 validation_steps_list = [int(500/val_batch_size)
                          for val_batch_size in val_batch_sizes_list]
-early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True, verbose=1)
+early_stopping = EarlyStopping(monitor='acc', patience=5, restore_best_weights=True, verbose=1)
 
 for model in models:
     for optimizer in optimizer_list:
