@@ -4,6 +4,7 @@ import yaml
 
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
+from keras.callbacks import EarlyStopping
 
 from models import alex_net
 
@@ -45,6 +46,7 @@ steps_per_epoch_list = [int(1500/batch_size)
                         for batch_size in batch_size_list]
 validation_steps_list = [int(500/val_batch_size)
                          for val_batch_size in val_batch_sizes_list]
+early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True, verbose=1)
 
 for model in models:
     for optimizer in optimizer_list:
@@ -74,7 +76,7 @@ for model in models:
 
                 history = initialized_model.fit(
                     train_datagenerator, epochs=epochs, verbose=1, validation_data=validation_datagenerator,
-                    steps_per_epoch=steps_per_epoch, validation_steps=validation_steps
+                    steps_per_epoch=steps_per_epoch, validation_steps=validation_steps , callbacks=[early_stopping]
                 )
 
                 initialized_model.save(final_model)
