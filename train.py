@@ -46,14 +46,15 @@ steps_per_epoch_list = [int(1500/batch_size)
                         for batch_size in batch_size_list]
 validation_steps_list = [int(500/val_batch_size)
                          for val_batch_size in val_batch_sizes_list]
-early_stopping = EarlyStopping(monitor='acc', patience=5, restore_best_weights=True, verbose=1)
+early_stopping = EarlyStopping(
+    monitor='acc', patience=5, restore_best_weights=True, verbose=1)
 
 for model in models:
     for optimizer in optimizer_list:
         for learning_rate in learning_rate_list:
             for batch_size, val_batch_size, steps_per_epoch, validation_steps in \
                     zip(batch_size_list, val_batch_sizes_list, steps_per_epoch_list, validation_steps_list):
-                
+
                 model_name = f'{model["name"]}_{optimizer["name"]}_{learning_rate}_{batch_size}'
 
                 train_datagenerator = train.flow_from_directory(
@@ -76,8 +77,9 @@ for model in models:
 
                 history = initialized_model.fit(
                     train_datagenerator, epochs=epochs, verbose=1, validation_data=validation_datagenerator,
-                    steps_per_epoch=steps_per_epoch, validation_steps=validation_steps , callbacks=[early_stopping]
-                )
+                    steps_per_epoch=steps_per_epoch, validation_steps=validation_steps, callbacks=[
+                        early_stopping
+                    ])
 
                 initialized_model.save(final_model)
                 with open(os.path.join(DATA_DIRECTORY, 'models', f'{model_name}.yml'), 'w') as f:
